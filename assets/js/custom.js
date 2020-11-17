@@ -1,5 +1,5 @@
 // Wyświetlanie różnych wartości w zależności od liczby punktów pobranych z wyniku
-const url_string = "http://btake.me/ap/result?score=57"; //skorzystamy z automatycznego pobierania później (window.location.href)
+const url_string = window.location.href; //skorzystamy z automatycznego pobierania później (window.location.href)
 const url = new URL(url_string);
 const score = url.searchParams.get("score");
 
@@ -18,6 +18,8 @@ const get_score_text = (score) => {
         }else{
             return 'Rewelacja! Twój profil jest idealny!';
         }
+    }else{
+        return 'Ups! Coś poszło nie tak z pobieraniem Twojego wyniku. Spróbuj ponownie przesłać formularz.';
     }
 }
 
