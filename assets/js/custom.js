@@ -1,5 +1,9 @@
 // Wyświetlanie różnych wartości w zależności od liczby punktów pobranych z wyniku
+<<<<<<< HEAD
 const url_string = window.location.href; //skorzystamy z automatycznego pobierania później (window.location.href)
+=======
+const url_string = window.location.href;
+>>>>>>> 449c952 (Test Facebooka 3)
 const url = new URL(url_string);
 const score = url.searchParams.get("score");
 
@@ -23,6 +27,25 @@ const get_score_text = (score) => {
     }
 }
 
+let test = "";
+const makeScreenshot = () => {
+    html2canvas(document.getElementById("screenshot"), {scale: 2}).then(canvas => {
+        canvas.id = "canvasID";
+        let main = document.getElementById("main");
+        while (main.firstChild){ main.removeChild(main.firstChild);}
+        main.appendChild(canvas);
+    });
+    // html2canvas(document.body).then(function(canvas) {
+    //     document.body.appendChild(canvas);
+    //     test = canvas.toDataURL();
+    // });
+}
+
 $('#diagram').attr('data-circles-value', score);
 $('#punktacja').text(score + " / 100 pkt.");
 $('#opis').text(get_score_text(score));
+$('#a-make').on('click', makeScreenshot);
+document.getElementById("a-download").addEventListener('click', function(){
+    this.href = document.getElementById("canvasID").toDataURL();
+    this.download = "canvas-image.png";
+});
