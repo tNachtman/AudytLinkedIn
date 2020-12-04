@@ -40,3 +40,9 @@ html, body{
     position: relative;
     z-index: 10;
 }
+
+#social_buttons{
+    position: absolute;
+    bottom: 10%;
+    z-index: 2;
+}
